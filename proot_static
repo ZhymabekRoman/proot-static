@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# This script is wrapper arround static builded proot for Termux
+#
+#
+
+CWD=$(pwd)
+
+# Export proot's ELF loader
+export PROOT_LOADER=${CWD}/bin/loader
+
+# Unset LD_PRELOAD in case termux-exec is installed
+# We need this to disable the preloaded libtermux-exec.so library
+# which redefines 'execve()' implementation.
+unset LD_PRELOAD
+
+${CWD}/bin/proot $1
