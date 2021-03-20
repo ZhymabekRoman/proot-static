@@ -4,7 +4,7 @@
 #
 #
 
-CWD=`dirname "$BASH_SOURCE"`
+CWD="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 
 # Export proot's ELF loader
 export PROOT_LOADER=${CWD}/bin/loader
@@ -14,4 +14,4 @@ export PROOT_LOADER=${CWD}/bin/loader
 # which redefines 'execve()' implementation.
 unset LD_PRELOAD
 
-${CWD}/bin/proot $1
+"$CWD"/bin/proot "$@"
