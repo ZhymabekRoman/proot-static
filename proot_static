@@ -7,7 +7,7 @@
 CWD="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 
 # Export proot's ELF loader
-export PROOT_LOADER=${CWD}/bin/loader
+export PROOT_LOADER="$CWD"/bin/loader
 
 # Unset LD_PRELOAD in case termux-exec is installed
 # We need this to disable the preloaded libtermux-exec.so library
