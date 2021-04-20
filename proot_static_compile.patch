@@ -1,0 +1,31 @@
+From 2bc9ea01b46070fdd3398a782776c84e753944cd Mon Sep 17 00:00:00 2001
+From: Zhymabek Roman <61125068+ZhymabekRoman@users.noreply.github.com>
+Date: Sat, 20 Mar 2021 15:39:23 +0600
+Subject: [PATCH] Update build.sh
+
+---
+ packages/proot/build.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/packages/proot/build.sh b/packages/proot/build.sh
+index c0f6120cb..4c815051c 100644
+--- a/packages/proot/build.sh
++++ b/packages/proot/build.sh
+@@ -8,12 +8,13 @@ TERMUX_PKG_VERSION=5.1.107
+ TERMUX_PKG_REVISION=37
+ TERMUX_PKG_SRCURL=https://github.com/termux/proot/archive/${_COMMIT}.zip
+ TERMUX_PKG_SHA256=a733cbbb9ad3d88c87dc1d99313249ebd6209237d838b934730fafbe724b6642
+-TERMUX_PKG_DEPENDS="libtalloc"
++TERMUX_PKG_DEPENDS="libtalloc-static, libtalloc"
+ 
+ # Install loader in libexec instead of extracting it every time
+ export PROOT_UNBUNDLE_LOADER=$TERMUX_PREFIX/libexec/proot
+ 
+ termux_step_pre_configure() {
++	LDFLAGS+=" -static"
+ 	CPPFLAGS+=" -DARG_MAX=131072"
+ }
+ 
+-- 
+2.25.1
+
