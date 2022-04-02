@@ -2,8 +2,7 @@
 A static compiled version of proot from Termux. Only armhf binary files, but also works on arm64
 
 ## Usage example
-0) proot-static can be used to run 32 bit proot systems on 64 bit environments without installing 32 bit packages, and switching environment (for example, to run box86/box64).
-1) also proot-static does not require any dependency on the system, accordingly can be started without any dependencies (talloc and etc) (Only in Android, of course).
+proot-static can be used to run 32 bit proot systems on 64 bit environments without installing 32 bit packages, and switching environment (for example, to run box86/box64). Also proot-static does not require any dependency on the system, accordingly can be started without any dependencies (talloc and etc) (only in Android, of course).
 
 ## Usage
 ```
@@ -18,3 +17,7 @@ $ cd proot-static/
 $ export PATH=`pwd`/bin:$PATH
 $ export PROOT_LOADER=`pwd`/bin/loader
 ```
+
+## Compile
+1. Clone `termux-packages` repository and apply patch `patches/proot_static_compile.patch`. For compilation I used GitHub Action (CI).
+2. Extract output deb package and fix proot static binary by applying align fix patch `patches/align_fix.py`. More about this issue: https://github.com/termux/termux-packages/issues/8273
