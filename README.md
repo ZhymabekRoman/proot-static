@@ -19,5 +19,4 @@ $ export PROOT_LOADER=`pwd`/bin/loader
 ```
 
 ## Compile
-1. Clone `termux-packages` repository and apply patch `patches/proot_static_compile.patch`. For compilation I used GitHub Action (CI).
-2. Extract output deb package and fix proot static binary by applying align fix patch `patches/align_fix.py`. More about this issue: https://github.com/termux/termux-packages/issues/8273
+Clone `termux-packages` repository and apply patch `patches/proot_static_compile.patch`. For compilation I used GitHub Action (CI).
